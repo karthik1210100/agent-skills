@@ -73,7 +73,9 @@ npx skills add https://github.com/karthik1210100/agent-skills --skill react-form
 
 The CLI detects every agent you have (Claude Code, Codex, Copilot, …) and installs the skill for all of them.
 
-**2. Then just work normally.** Ask your agent for the thing — *"add a `POST /articles` endpoint"* — and it matches your request against each skill's `description`, loads the right playbook, and follows it. You don't invoke it by hand; the `description` is the trigger.
+**2. Then just work normally.** Ask your agent for the thing — *"add a `POST /articles` endpoint"* — and it matches your request against each skill's `description`, loads the right playbook, and follows it. Usually you don't invoke it by hand — the `description` is the trigger.
+
+**Want to be sure a skill is used?** For a task your agent might otherwise just write from memory, name the skill explicitly — *"follow the `rails-api-endpoint` skill"* — and it loads the playbook on demand. Auto-triggered or hand-picked, you get the same reviewed approach.
 
 > **Tip:** install a skill into any repo where you want that standard enforced. The files are committed with the project, so your teammates' agents follow the same playbook too.
 
