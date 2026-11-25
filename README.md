@@ -13,8 +13,8 @@
 <p align="center">
   <a href="#what-is-this">What it is</a> &middot;
   <a href="#skills">Skills</a> &middot;
-  <a href="#quick-start">Quick start</a> &middot;
   <a href="#how-it-works">How it works</a> &middot;
+  <a href="#quick-start">Quick start</a> &middot;
   <a href="#writing-your-own">Write your own</a>
 </p>
 
