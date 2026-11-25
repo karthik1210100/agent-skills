@@ -33,10 +33,11 @@ These are written in the portable `SKILL.md` format, so the same files work acro
 | Skill | What it does |
 |---|---|
 | **[rails-api-endpoint](skills/rails-api-endpoint/SKILL.md)** | Build a Rails JSON endpoint that is thin, authorized, consistently shaped, and tested — routing, strong params, serialization, Pundit authorization, a single error shape, N+1 avoidance, and a request spec. |
-| **[react-data-hook](skills/react-data-hook/SKILL.md)** | Fetch server data in React + TypeScript the right way — a typed, cancellable custom hook with loading/error/data states, `AbortController` cleanup, and no updates after unmount. |
 | **[rails-sidekiq-job](skills/rails-sidekiq-job/SKILL.md)** | Write a Sidekiq background job that is safe to run more than once — enqueue ids not objects, a thin worker, an idempotency guard, a deliberate retry/backoff policy, locking for money and external calls, and a spec that proves a second run is a no-op. |
+| **[react-data-hook](skills/react-data-hook/SKILL.md)** | Fetch server data in React + TypeScript the right way — a typed, cancellable custom hook with loading/error/data states, `AbortController` cleanup, and no updates after unmount. |
+| **[react-form](skills/react-form/SKILL.md)** | Build a React + TypeScript form that submits to an API — explicit submit states, no double-posting, client validation, and server `422` field errors mapped back onto the inputs, accessibly. The write-side twin of `react-data-hook`. |
 
-Between them they cover a whole feature: a clean API on the server, a correct way to consume it on the client, and safe background work behind it.
+Together they cover a feature end to end: a clean API and safe background work on the server, and a correct way to read and write it from the client. The error shape `rails-api-endpoint` returns is exactly the one `react-form` consumes — the skills are designed to interlock.
 
 ## How it works
 
@@ -65,8 +66,9 @@ No prompt-wrangling at the moment you need the feature. The thinking happened on
 ```bash
 # pick the skill(s) you want
 npx skills add https://github.com/karthik1210100/agent-skills --skill rails-api-endpoint
-npx skills add https://github.com/karthik1210100/agent-skills --skill react-data-hook
 npx skills add https://github.com/karthik1210100/agent-skills --skill rails-sidekiq-job
+npx skills add https://github.com/karthik1210100/agent-skills --skill react-data-hook
+npx skills add https://github.com/karthik1210100/agent-skills --skill react-form
 ```
 
 The CLI detects every agent you have (Claude Code, Codex, Copilot, …) and installs the skill for all of them.
