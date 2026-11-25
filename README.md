@@ -13,8 +13,8 @@
 <p align="center">
   <a href="#what-is-this">What it is</a> &middot;
   <a href="#skills">Skills</a> &middot;
+  <a href="#quick-start">Quick start</a> &middot;
   <a href="#how-it-works">How it works</a> &middot;
-  <a href="#install">Install</a> &middot;
   <a href="#writing-your-own">Write your own</a>
 </p>
 
@@ -34,8 +34,9 @@ These are written in the portable `SKILL.md` format, so the same files work acro
 |---|---|
 | **[rails-api-endpoint](skills/rails-api-endpoint/SKILL.md)** | Build a Rails JSON endpoint that is thin, authorized, consistently shaped, and tested — routing, strong params, serialization, Pundit authorization, a single error shape, N+1 avoidance, and a request spec. |
 | **[react-data-hook](skills/react-data-hook/SKILL.md)** | Fetch server data in React + TypeScript the right way — a typed, cancellable custom hook with loading/error/data states, `AbortController` cleanup, and no updates after unmount. |
+| **[rails-sidekiq-job](skills/rails-sidekiq-job/SKILL.md)** | Write a Sidekiq background job that is safe to run more than once — enqueue ids not objects, a thin worker, an idempotency guard, a deliberate retry/backoff policy, locking for money and external calls, and a spec that proves a second run is a no-op. |
 
-Together they cover both ends of a feature: a clean API on the server and a correct way to consume it on the client.
+Between them they cover a whole feature: a clean API on the server, a correct way to consume it on the client, and safe background work behind it.
 
 ## How it works
 
@@ -57,23 +58,22 @@ Together they cover both ends of a feature: a clean API on the server and a corr
 
 No prompt-wrangling at the moment you need the feature. The thinking happened once, when you wrote the skill.
 
-## Install
+## Quick start
 
-Install any skill into your project with the [`skills`](https://skills.sh) CLI (no global install needed):
+**1. Install a skill** into your project with the [`skills`](https://skills.sh) CLI — no global install, no config:
 
 ```bash
-# a single skill
+# pick the skill(s) you want
 npx skills add https://github.com/karthik1210100/agent-skills --skill rails-api-endpoint
-
-# the frontend one too
 npx skills add https://github.com/karthik1210100/agent-skills --skill react-data-hook
+npx skills add https://github.com/karthik1210100/agent-skills --skill rails-sidekiq-job
 ```
 
-The CLI installs the skill for every agent it detects (Claude Code, Codex, Copilot, …). Your agent then loads the playbook automatically when the task matches the skill's `description`.
+The CLI detects every agent you have (Claude Code, Codex, Copilot, …) and installs the skill for all of them.
 
-## Use
+**2. Then just work normally.** Ask your agent for the thing — *"add a `POST /articles` endpoint"* — and it matches your request against each skill's `description`, loads the right playbook, and follows it. You don't invoke it by hand; the `description` is the trigger.
 
-Once installed, just work normally. When you ask your agent to, say, *"add a `POST /articles` endpoint"*, it picks up `rails-api-endpoint` and follows the playbook — RESTful route, thin controller, authorization, the standard error shape, and a request spec — instead of improvising.
+> **Tip:** install a skill into any repo where you want that standard enforced. The files are committed with the project, so your teammates' agents follow the same playbook too.
 
 ## Writing your own
 
